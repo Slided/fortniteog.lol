@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>anxious</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Aldrich" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .background-video-container {
+            position: fixed;
+            background-color: black;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .background-video {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            border: none;
+            filter: blur(10px); /* Apply blur to video */
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 2rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .titlefr {
+            align-content: center;
+            text-align: center;
+            color: white;
+            font-family: 'Aldrich'; 
+            font-size: 22px;
+            text-shadow: 2px 2px 4px #F0E68C;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-video-container">
+        <video class="background-video" autoplay loop muted playsinline>
+            <source src="bg.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <a href="https://www.discordapp.com/users/344566614492184587" target="_blank" rel="noopener noreferrer"> 
+            <img id="logo" src="https://i.pinimg.com/originals/71/53/eb/7153ebb8797da29134bb6a52689618a0.gif" alt="hello &#9829;">
+        </a>
+    </div>
+
+    <!-- Hidden Audio Player -->
+    <audio id="music" src="music.mp3"></audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let audio = document.getElementById("music");
+            audio.volume = 0.85; // Set volume to 85%
+            
+            // Attempt to autoplay (some browsers block autoplay until user interacts)
+            audio.play().catch(error => {
+                console.log("Autoplay blocked, user must interact to start music.");
+            });
+        });
+    </script>
+</body>
+</html>
