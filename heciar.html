@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Heciar Redirect | FortniteOG.lol</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+    .message {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin-bottom: 20px;
+    }
+    .btn {
+      padding: 12px 20px;
+      font-size: 1em;
+      color: white;
+      background-color: #3474ff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out;
+    }
+    .btn:hover {
+      background-color: #255dcc;
+    }
+  </style>
+  <script>
+    function openLinks() {
+      window.open("https://www.tiktok.com/@v2heciar", "_blank");
+      window.open("https://discord.gg/TkZX9SXZAF", "_blank");
+      setTimeout(function() {
+        window.close();
+      }, 500);
+    }
+
+    window.onload = function() {
+      // Try automatic open
+      openLinks();
+    };
+  </script>
+</head>
+<body>
+  <div class="message">
+    If content doesn’t load then please load link in your normal browser, not an in-app browser.
+  </div>
+  <button class="btn" onclick="openLinks()">Open Links Manually</button>
+</body>
+</html>
