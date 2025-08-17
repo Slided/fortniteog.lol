@@ -9,7 +9,7 @@
   <meta property="og:title" content="Join V2heciar Community">
   <meta property="og:description" content="A Discord server for updates, discussions, and more. Click to join!">
   <meta property="og:url" content="https://discord.gg/TkZX9SXZAF">
-  <meta property="og:image" content="https://static.wikia.nocookie.net/fortnite/images/9/9f/Ghoul_Trooper_%28Pink%29_-_Outfit_-_Fortnite.png/revision/latest?cb=20191101172553"> <!-- replace with your server icon URL -->
+  <meta property="og:image" content="https://static.wikia.nocookie.net/fortnite/images/9/9f/Ghoul_Trooper_%28Pink%29_-_Outfit_-_Fortnite.png/revision/latest?cb=20191101172553">
 
   <!-- Twitter Card Meta -->
   <meta name="twitter:card" content="summary_large_image">
@@ -32,9 +32,10 @@
       padding: 20px;
     }
     .message {
-      font-size: 1.2em;
+      font-size: 1.3em;
       max-width: 600px;
       margin-bottom: 20px;
+      line-height: 1.6em;
     }
     .btn {
       padding: 12px 20px;
@@ -45,29 +46,40 @@
       border-radius: 8px;
       cursor: pointer;
       transition: background 0.2s ease-in-out;
+      text-decoration: none;
     }
     .btn:hover {
       background-color: #255dcc;
     }
   </style>
   <script>
-    function openLinks() {
-      window.open("https://www.tiktok.com/@v2heciar", "_blank", "noopener,noreferrer");
-      window.open("https://discord.gg/TkZX9SXZAF", "_blank", "noopener,noreferrer");
-      setTimeout(function() {
-        window.close();
-      }, 8000);
+    let waitTime = 6; // seconds
+
+    function startCountdown() {
+      const countdownEl = document.getElementById("countdown");
+
+      const timer = setInterval(() => {
+        countdownEl.textContent = `Redirecting in ${waitTime} seconds...`;
+        waitTime--;
+
+        if (waitTime < 0) {
+          clearInterval(timer);
+          // Redirect to Discord invite
+          window.location.href = "https://discord.gg/TkZX9SXZAF";
+        }
+      }, 1000);
     }
 
     window.onload = function() {
-      openLinks();
+      startCountdown();
     };
   </script>
 </head>
 <body>
   <div class="message">
-    If content doesn’t load then please load link in your normal browser, not an in-app browser.
+    Check out my TikTok! <br>
+    <span id="countdown">Redirecting in 6 seconds...</span>
   </div>
-  <button class="btn" onclick="openLinks()">Open Links Manually</button>
+  <a class="btn" href="https://www.tiktok.com/@v2heciar" target="_blank" rel="noopener noreferrer">@v2heciar</a>
 </body>
 </html>
