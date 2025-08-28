@@ -28,62 +28,73 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.7.2/css/all.css">
 
     <style>
+        /* Reset + Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Aldrich', sans-serif;
-            background: #0d0d0d;
+            background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #121212);
             color: #e0e0e0;
-            margin: 0;
-            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
+        /* Header */
         header {
             text-align: center;
-            padding: 50px 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #161616, #0f0f0f);
+            border-bottom: 2px solid rgba(255,255,255,0.1);
         }
-
         header h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: #fff;
+            text-shadow: 0 0 20px rgba(88,101,242,0.8);
         }
-
         header p {
+            margin-top: 15px;
             color: #aaa;
-            margin-top: 10px;
+            font-size: 1.2rem;
         }
 
+        /* Containers */
         .container {
             width: 90%;
-            max-width: 900px;
-            margin: 40px auto;
+            max-width: 1000px;
+            margin: 60px auto;
         }
 
         .card {
-            background: #1a1a1a;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0px 6px 18px rgba(0,0,0,0.6);
+            background: rgba(26,26,26,0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.7);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
         }
-
+        .card.show {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s ease;
+        }
         .card h2 {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
             color: #fff;
         }
+        .card p, .card li { font-size: 1rem; }
 
-        .card p, .card li {
-            line-height: 1.6;
-        }
-
-        ol {
-            padding-left: 20px;
-        }
+        /* Lists */
+        ol { padding-left: 20px; }
+        li { margin-bottom: 12px; }
 
         code {
             background: #222;
-            padding: 3px 6px;
-            border-radius: 5px;
+            padding: 4px 8px;
+            border-radius: 6px;
             color: #ffb86c;
+            font-size: 0.95rem;
         }
 
         .highlight {
@@ -91,52 +102,63 @@
             font-weight: bold;
         }
 
-        /* Media elements */
-        .media {
-            text-align: center;
-        }
-
+        /* Media */
+        .media { text-align: center; }
         iframe {
             width: 100%;
-            max-width: 800px;
-            height: 450px;
-            border-radius: 15px;
+            max-width: 900px;
+            height: 500px;
+            border-radius: 20px;
             border: none;
+            margin-top: 20px;
+            box-shadow: 0px 8px 30px rgba(0,0,0,0.6);
         }
-
         img {
             max-width: 100%;
-            border-radius: 15px;
+            border-radius: 20px;
             margin-top: 20px;
+            box-shadow: 0px 6px 20px rgba(0,0,0,0.5);
         }
 
         /* Discord button */
         .discord-btn {
             display: inline-block;
-            padding: 14px 32px;
+            padding: 16px 36px;
             background: linear-gradient(45deg, #5865F2, #4752c4);
             color: white;
             border-radius: 50px;
             font-weight: bold;
-            font-size: 1.2rem;
-            margin-top: 25px;
-            box-shadow: 0px 4px 15px rgba(88,101,242,0.6);
-            transition: all 0.25s ease;
+            font-size: 1.3rem;
+            margin-top: 30px;
+            box-shadow: 0px 6px 20px rgba(88,101,242,0.6);
+            transition: all 0.3s ease;
+            text-decoration: none;
         }
-
         .discord-btn:hover {
             background: linear-gradient(45deg, #4752c4, #5865F2);
-            transform: scale(1.05);
-            box-shadow: 0px 6px 22px rgba(88,101,242,0.8);
+            transform: scale(1.07);
+            box-shadow: 0px 10px 28px rgba(88,101,242,0.9);
         }
 
+        /* Note Box */
+        .note {
+            background: rgba(88,101,242,0.15);
+            border: 1px solid rgba(88,101,242,0.5);
+            color: #cdd1ff;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 40px;
             color: #777;
             font-size: 0.9rem;
             border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 40px;
+            margin-top: 60px;
         }
     </style>
 </head>
@@ -150,6 +172,10 @@
         <!-- Steps -->
         <div class="card">
             <h2>Step-by-Step Instructions</h2>
+            <div class="note">
+                ⚠️ You must be in the <b>Velocity Discord Server</b> before you can access 
+                <a href="https://discord.com/channels/943223926509699072/1392711460299210873" target="_blank">#updates</a>.
+            </div>
             <ol>
                 <li>Go to <a href="https://discord.com/channels/943223926509699072/1392711460299210873" target="_blank">#updates (velocity discord server)</a>.</li>
                 <li>Copy any version hash (looks like <code>"version-xxxxxxxxxxxxxxxx"</code>) (MUST BE WINDOWS).</li>
@@ -197,5 +223,19 @@
     <footer>
         <p>&copy; 2025 Quick Start Guide | @yesmyaccountisrare</p>
     </footer>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        const cards = document.querySelectorAll('.card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        cards.forEach(card => observer.observe(card));
+    </script>
 </body>
 </html>
