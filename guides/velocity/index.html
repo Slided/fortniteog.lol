@@ -1,591 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- =========================================================================
-       CANONICAL & SOCIAL META
-       ========================================================================= -->
-  <link rel="canonical" href="http://fortniteog.lol/">
+    <!-- META DATA -->
+    <link rel="canonical" href="http://fortniteog.lol/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="FortniteOG.lol">
+    <meta property="og:description" content="owned by loserant">
+    <meta property="og:url" content="https://fortniteog.lol/">
+    <meta property="og:site_name" content="FortniteOG.lol">
+    <meta property="og:image" content="metacard.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:description" content="owned by loserant">
+    <meta name="twitter:title" content="FortniteOG.lol">
+    <meta name="twitter:image" content="metacard.png">
 
-  <!-- Open Graph -->
-  <meta property="og:locale" content="en_US">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="FortniteOG.lol">
-  <meta property="og:description" content="owned by loserant">
-  <meta property="og:url" content="https://fortniteog.lol/">
-  <meta property="og:site_name" content="FortniteOG.lol">
-  <meta property="og:image" content="metacard.png">
-  <meta property="og:image:width" content="512">
-  <meta property="og:image:height" content="512">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:description" content="owned by loserant">
-  <meta name="twitter:title" content="FortniteOG.lol">
-  <meta name="twitter:image" content="metacard.png">
+    <title>Quick Start Guide | @yesmyaccountisrare</title>
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
 
-  <!-- Essentials -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css?family=Aldrich&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.7.2/css/all.css">
 
-  <title>anxious | @loserant</title>
+    <style>
+        body {
+            font-family: 'Aldrich', sans-serif;
+            background: #0d0d0d;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+        }
 
-  <!-- Favicon (one level up / parent folder) -->
-  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
 
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css?family=Aldrich&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.7.2/css/all.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vaakash/socializer@f794acd/css/socializer.min.css">
+        header h1 {
+            font-size: 2.5rem;
+            color: #fff;
+        }
 
-  <!-- =========================================================================
-       CORE STYLES (Dark mode, responsive, animations, utilities)
-       ========================================================================= -->
-  <style>
-    /* -----------------------------------------------------------------------
-       0) CSS RESET & ROOT VARIABLES
-       ----------------------------------------------------------------------- */
-    :root{
-      /* Color palette */
-      --bg-0: #0b0b0d;
-      --bg-1: #101014;
-      --bg-2: #15151c;
-      --card: rgba(26,26,34,0.9);
-      --muted: #9aa0a6;
-      --text: #e6e6e9;
-      --heading: #ffffff;
-      --brand: #5865F2;   /* Discord base */
-      --brand-2:#4752c4;
-      --link:  #58a6ff;
-      --link-2:#1f6feb;
-      --warn:  #ff5555;
-      --code:  #ffb86c;
-      --glow:  rgba(88,101,242,0.4);
-      --edge:  rgba(255,255,255,0.09);
+        header p {
+            color: #aaa;
+            margin-top: 10px;
+        }
 
-      /* Radii / spacing / shadows */
-      --r-lg: 18px;
-      --r-md: 14px;
-      --r-sm: 10px;
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+        }
 
-      --shadow-1: 0 10px 35px rgba(0,0,0,0.55);
-      --shadow-2: 0 18px 60px rgba(0,0,0,0.7);
-      --shadow-soft: 0 12px 40px rgba(0,0,0,0.5);
+        .card {
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0px 6px 18px rgba(0,0,0,0.6);
+        }
 
-      --container: 1100px;
-      --speed:  320ms;
-      --bezier: cubic-bezier(.2,.7,.2,1);
+        .card h2 {
+            margin-bottom: 15px;
+            color: #fff;
+        }
 
-      /* Gradients */
-      --grad-1: radial-gradient(1200px 600px at 20% -20%, rgba(88,101,242,0.12), transparent 60%),
-                radial-gradient(900px 500px at 110% 20%, rgba(31,111,235,0.12), transparent 60%),
-                linear-gradient(180deg, #0b0b0d 0%, #0e0e12 60%, #0b0b0d 100%);
-      --border-grad: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
-    }
+        .card p, .card li {
+            line-height: 1.6;
+        }
 
-    *,*::before,*::after{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: 'Aldrich', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji','Segoe UI Emoji';
-      color:var(--text);
-      background: var(--grad-1);
-      line-height:1.75;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      overflow-x:hidden;
-    }
-    img,svg,video,canvas{ display:block; max-width:100%; }
-    a{ color:var(--link); text-decoration:none; transition:color var(--speed) var(--bezier), opacity var(--speed) var(--bezier); }
-    a:hover{ color:var(--link-2); text-decoration:underline; }
+        ol {
+            padding-left: 20px;
+        }
 
-    /* -----------------------------------------------------------------------
-       1) LAYOUT BASICS
-       ----------------------------------------------------------------------- */
-    .wrap{
-      width: min(92%, var(--container));
-      margin-inline:auto;
-      padding: 28px 0 80px;
-    }
+        code {
+            background: #222;
+            padding: 3px 6px;
+            border-radius: 5px;
+            color: #ffb86c;
+        }
 
-    header.site-head{
-      padding: 42px 0 26px;
-      position: relative;
-      z-index: 3;
-      text-align:center;
-    }
-    .brand-mark{
-      display:inline-flex; align-items:center; gap:14px;
-      padding:12px 18px;
-      border-radius: 999px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-      border:1px solid var(--edge);
-      box-shadow: var(--shadow-1);
-      backdrop-filter: blur(6px);
-    }
-    .brand-mark i{
-      width:38px; height:38px; display:grid; place-items:center;
-      border-radius:50%;
-      background: radial-gradient(60% 60% at 50% 30%, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
-      border:1px solid rgba(255,255,255,0.06);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06), 0 0 0 6px rgba(255,255,255,0.02);
-      color:#fff;
-    }
-    .brand-mark span{
-      color:#fff; letter-spacing:.5px;
-      font-weight:600; font-size:1.02rem;
-      text-shadow: 0 2px 12px rgba(255,255,255,0.16);
-    }
-    .site-title{
-      margin: 26px 0 8px;
-      font-size: clamp(1.8rem, 3.8vw, 2.7rem);
-      color:var(--heading);
-      text-shadow: 0px 0px 18px rgba(255,255,255,0.15);
-    }
-    .site-sub{
-      color:var(--muted);
-      font-size: clamp(.95rem, 2.1vw, 1.1rem);
-    }
+        .highlight {
+            color: #ff4a4a;
+            font-weight: bold;
+        }
 
-    /* Divider line */
-    .divider{
-      height:1px; width:100%;
-      margin: 32px 0;
-      background: linear-gradient(90deg, transparent, var(--edge), transparent);
-    }
+        /* Media elements */
+        .media {
+            text-align: center;
+        }
 
-    /* -----------------------------------------------------------------------
-       2) CARDS / PANELS
-       ----------------------------------------------------------------------- */
-    .card{
-      background: var(--card);
-      border-radius: var(--r-lg);
-      padding: clamp(20px, 2.4vw, 34px);
-      margin: 28px 0;
-      box-shadow: var(--shadow-2);
-      position: relative;
-      border:1px solid var(--edge);
-      overflow:hidden;
-      isolation:isolate;
-    }
-    .card::before{
-      /* subtle top highlight */
-      content:"";
-      position:absolute; inset: 0 0 auto 0; height: 1px;
-      background: var(--border-grad);
-      opacity:.7;
-    }
-    .card:hover{ transform: translateY(-2px); transition: transform var(--speed) var(--bezier); }
+        iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border-radius: 15px;
+            border: none;
+        }
 
-    /* Glowing corner orbs */
-    .card .orb{
-      position:absolute; width:160px; height:160px; border-radius:50%;
-      filter: blur(36px);
-      opacity:.18; z-index:-1;
-      background: radial-gradient(closest-side, var(--brand), transparent);
-      animation: float 12s var(--bezier) infinite;
-    }
-    .card .orb.one{ top:-40px; left:-40px; }
-    .card .orb.two{ bottom:-50px; right:-50px; animation-delay: -5s; }
+        img {
+            max-width: 100%;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
 
-    @keyframes float{
-      0%{ transform: translate3d(0,0,0); }
-      50%{ transform: translate3d(6px, -8px, 0) scale(1.02); }
-      100%{ transform: translate3d(0,0,0); }
-    }
+        /* Discord button */
+        .discord-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: linear-gradient(45deg, #5865F2, #4752c4);
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 25px;
+            box-shadow: 0px 4px 15px rgba(88,101,242,0.6);
+            transition: all 0.25s ease;
+        }
 
-    h2.section-title{
-      margin: 0 0 14px;
-      color:#fff; letter-spacing:.4px;
-      font-size: clamp(1.2rem, 2.8vw, 1.6rem);
-    }
-    p{ margin: 0 0 14px; }
+        .discord-btn:hover {
+            background: linear-gradient(45deg, #4752c4, #5865F2);
+            transform: scale(1.05);
+            box-shadow: 0px 6px 22px rgba(88,101,242,0.8);
+        }
 
-    ol.guide-steps{
-      margin: 10px 0 0 22px;
-      padding-left: 10px;
-    }
-    ol.guide-steps > li{
-      margin: 10px 0;
-    }
-    ul.nested{
-      margin: 8px 0 12px 18px;
-      list-style: square;
-    }
-    code{
-      background:#1e1e25;
-      color:var(--code);
-      padding: 2px 6px;
-      border-radius: 6px;
-      border:1px solid rgba(255,255,255,0.06);
-    }
-    .tip{
-      padding: 12px 14px;
-      border-radius: var(--r-sm);
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-      border:1px dashed rgba(255,255,255,0.12);
-      color: #d7e3ff;
-    }
-    .warning{
-      color: var(--warn);
-      font-weight: 700;
-    }
-
-    /* -----------------------------------------------------------------------
-       3) RESPONSIVE MEDIA (YouTube & Image)
-       ----------------------------------------------------------------------- */
-    .media{
-      display:grid; gap:14px;
-      align-items:center; justify-items:center;
-      text-align:center;
-    }
-    .video-wrap{
-      position:relative; width:100%;
-      border-radius: var(--r-lg);
-      overflow:hidden;
-      box-shadow: var(--shadow-soft), 0 0 0 1px var(--edge) inset;
-      /* Aspect box technique (16:9) */
-      padding-top:56.25%;
-      background: #0d0d13;
-    }
-    .video-wrap iframe{
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      border:0; display:block;
-    }
-    .shot{
-      border-radius: var(--r-lg);
-      border:1px solid var(--edge);
-      box-shadow: var(--shadow-soft);
-    }
-
-    /* -----------------------------------------------------------------------
-       4) INLINE CTA BUTTONS
-       ----------------------------------------------------------------------- */
-    .btn-row{
-      display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:center;
-      margin-top:10px;
-    }
-    .btn{
-      --h: 50px;
-      min-width: 180px;
-      height: var(--h);
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding: 0 22px;
-      font-weight: 700;
-      letter-spacing:.3px;
-      border-radius: 1000px;
-      border:1px solid var(--edge);
-      color:#fff;
-      background: linear-gradient(145deg, var(--brand), var(--brand-2));
-      box-shadow: 0 10px 30px var(--glow);
-      transition: transform var(--speed) var(--bezier), box-shadow var(--speed) var(--bezier), filter var(--speed) var(--bezier);
-    }
-    .btn:hover{
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 16px 38px rgba(88,101,242,0.6);
-      filter: saturate(110%);
-      text-decoration:none;
-    }
-    .btn:active{ transform: translateY(0); }
-
-    /* Subtle link button style (for Velocity Discord text link) */
-    .link-chip{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border:1px solid var(--edge);
-      background: rgba(255,255,255,0.04);
-      transition: background var(--speed) var(--bezier), transform var(--speed) var(--bezier);
-    }
-    .link-chip:hover{ background: rgba(255,255,255,0.08); transform: translateY(-1px); text-decoration:none; }
-
-    /* -----------------------------------------------------------------------
-       5) UTILITIES
-       ----------------------------------------------------------------------- */
-    .mt-0{ margin-top:0!important; }
-    .mt-8{ margin-top:8px!important; }
-    .mt-12{ margin-top:12px!important; }
-    .mt-18{ margin-top:18px!important; }
-    .mt-22{ margin-top:22px!important; }
-    .mt-28{ margin-top:28px!important; }
-    .center{ text-align:center; }
-    .muted{ color: var(--muted); }
-    .mono{ font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace; }
-    .small{ font-size:.95rem; }
-    .max-720{ max-width:720px; margin-inline:auto; }
-
-    /* -----------------------------------------------------------------------
-       6) FOOTER
-       ----------------------------------------------------------------------- */
-    footer.site-foot{
-      margin-top: 48px; padding:26px 0 80px;
-      text-align:center; color:var(--muted);
-      border-top: 1px solid var(--edge);
-    }
-    .foot-row{
-      display:flex; flex-direction:column; gap:6px; align-items:center; justify-content:center;
-    }
-
-    /* -----------------------------------------------------------------------
-       7) MEDIA QUERIES (Small screens)
-       ----------------------------------------------------------------------- */
-    @media (max-width: 860px){
-      .wrap{ width: min(94%, var(--container)); }
-      .btn{ min-width: 170px; --h:48px; }
-    }
-    @media (max-width: 560px){
-      header .brand-mark{ transform: scale(.95); }
-      .site-title{ line-height:1.2; }
-      .btn{ min-width: 160px; --h:46px; font-size:.95rem; }
-    }
-
-    /* -----------------------------------------------------------------------
-       8) FUN EXTRAS (grad grid, animated border, particle dust)
-       ----------------------------------------------------------------------- */
-    .grid-bg{
-      position:fixed; inset:0; pointer-events:none; z-index:0;
-      background:
-        linear-gradient(transparent 49%, rgba(255,255,255,0.04) 50%, transparent 51%) 0 0/ 100% 38px,
-        linear-gradient(90deg, transparent 49%, rgba(255,255,255,0.04) 50%, transparent 51%) 0 0/ 38px 100%;
-      mask-image: radial-gradient(1200px 600px at 50% -10%, #000 40%, transparent 70%);
-      opacity:.4;
-    }
-    .ring{
-      --c: rgba(255,255,255,0.06);
-      position: absolute; inset: -1px; border-radius: inherit; pointer-events:none;
-      background: conic-gradient(from 0deg, transparent, var(--c), transparent 25%);
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor; mask-composite: exclude;
-      padding:1px;
-      animation: spin 9s linear infinite;
-      opacity:.7;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* Dust/particles floating */
-    .dust{
-      position: fixed; inset: 0; pointer-events:none; z-index:1; opacity:.28;
-      background-image:
-        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.3) 40%, transparent 60%),
-        radial-gradient(2px 2px at 60% 80%, rgba(255,255,255,0.25) 40%, transparent 60%),
-        radial-gradient(2px 2px at 80% 20%, rgba(255,255,255,0.2) 40%, transparent 60%),
-        radial-gradient(2px 2px at 30% 60%, rgba(255,255,255,0.15) 40%, transparent 60%);
-      animation: drift 30s ease-in-out infinite;
-    }
-    @keyframes drift{
-      0%{ transform: translateY(0) translateX(0); }
-      50%{ transform: translateY(-10px) translateX(8px); }
-      100%{ transform: translateY(0) translateX(0); }
-    }
-  </style>
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
-  <!-- Decorative layers -->
-  <div class="grid-bg" aria-hidden="true"></div>
-  <div class="dust" aria-hidden="true"></div>
+    <header>
+        <h1>Quick Start Guide</h1>
+        <p>Roblox Spoofed Client Setup | By @yesmyaccountisrare</p>
+    </header>
 
-  <!-- =========================================================================
-       HEADER
-       ========================================================================= -->
-  <header class="site-head wrap">
-    <div class="brand-mark">
-      <i class="fa-solid fa-bolt"></i>
-      <span>anxious • @loserant</span>
+    <div class="container">
+        <!-- Steps -->
+        <div class="card">
+            <h2>Step-by-Step Instructions</h2>
+            <ol>
+                <li>Go to <a href="https://discord.com/channels/943223926509699072/1392711460299210873" target="_blank">#updates (velocity discord server)</a>.</li>
+                <li>Copy any version hash (looks like <code>"version-xxxxxxxxxxxxxxxx"</code>) (MUST BE WINDOWS).</li>
+                <li>Paste that into the version hash and download.<br>
+                    Recommended hash: <code>89b6c70d8f7f42ac</code></li>
+                <li>Once downloaded (<code>LIVE-WindowsPlayer-version-xxxx.zip</code>):</li>
+                <ul>
+                    <li>Find your Roblox install folder:<br>
+                        <code>C:\Users\xxxx\AppData\Local\Roblox\Versions\version-(CurrentVersion)</code>
+                    </li>
+                    <li>Remove all content in it.</li>
+                    <li>Put your spoofed version of the client in.</li>
+                </ul>
+                <li>You are now free to run and inject.</li>
+            </ol>
+
+            <p><b>Tip:</b> Duplicate your folder before first run of spoofed version in case Roblox updates.</p>
+            <p class="highlight">
+                IF ROBLOX UPDATES THEN YOU MUST REDO ALL OF THESE STEPS + CLEAR ANY OTHER VERSIONS IN YOUR VERSIONS FOLDER TO AVOID CONFLICT.<br>
+                (Save the spoofed version in the folder as backup if you want, as <code>"spoof"</code>).
+            </p>
+            <p>Need help? DM <b>@yesmyaccountisrare</b> (Discord ID: <code>344566614492184587</code>).</p>
+        </div>
+
+        <!-- Video -->
+        <div class="card media">
+            <h2>Video Guide</h2>
+            <iframe src="https://www.youtube.com/embed/F4wntEQpO7o" allowfullscreen></iframe>
+        </div>
+
+        <!-- Screenshot -->
+        <div class="card media">
+            <h2>Screenshot Example</h2>
+            <img src="image.png" alt="Guide Screenshot">
+        </div>
+
+        <!-- Discord -->
+        <div class="card media">
+            <a class="discord-btn" href="https://discord.gg/S4F59A5xsB" target="_blank">
+                <i class="fab fa-discord"></i> Join Discord
+            </a>
+        </div>
     </div>
 
-    <h1 class="site-title">Quick Start Guide</h1>
-    <p class="site-sub">Roblox Spoofed Client Setup — clean, fast, and simple.</p>
-
-    <div class="divider"></div>
-  </header>
-
-  <!-- =========================================================================
-       CONTENT
-       ========================================================================= -->
-  <main class="wrap">
-    <!-- Steps Card -->
-    <section class="card" aria-labelledby="steps-title">
-      <div class="ring" aria-hidden="true"></div>
-      <div class="orb one"></div>
-      <div class="orb two"></div>
-
-      <h2 id="steps-title" class="section-title">Step-by-Step Instructions</h2>
-
-      <p class="small muted mt-8 max-720">
-        Need a version hash? Jump into the
-        <a class="link-chip" href="https://discord.gg/velocityide" target="_blank" rel="noopener">
-          <i class="fa-brands fa-discord"></i>
-          <span>Velocity Discord Server</span>
-        </a>
-      </p>
-
-      <ol class="guide-steps max-720">
-        <li>
-          Copy any version hash (looks like
-          <code>"version-xxxxxxxxxxxxxxxx"</code>)
-          from <strong>Velocityupdates</strong> (MUST BE WINDOWS).
-        </li>
-
-        <li>
-          Paste that into the version hash and download.<br>
-          Recommended hash:
-          <code class="mono">89b6c70d8f7f42ac</code>
-        </li>
-
-        <li>
-          Once downloaded (<code>LIVE-WindowsPlayer-version-xxxx.zip</code>):
-          <ul class="nested">
-            <li>
-              Find your Roblox install folder:
-              <code class="mono">C:\Users\xxxx\AppData\Local\Roblox\Versions\version-(CurrentVersion)</code>
-            </li>
-            <li>Remove all content in it.</li>
-            <li>Put your spoofed version of the client in.</li>
-          </ul>
-        </li>
-
-        <li>You are now free to run and inject.</li>
-      </ol>
-
-      <p class="tip mt-18 max-720">
-        <strong>Tip:</strong> Duplicate your folder before the first run of the spoofed version in case Roblox updates.
-      </p>
-
-      <p class="mt-18 warning max-720">
-        <strong>IF ROBLOX UPDATES</strong> THEN YOU MUST REDO ALL OF THESE STEPS + CLEAR ANY OTHER VERSIONS IN YOUR VERSIONS FOLDER TO AVOID CONFLICT.
-        <br>
-        (Save the spoofed version in the folder as backup if you want, as <code>"spoof"</code>).
-      </p>
-
-      <p class="mt-18 max-720">
-        Need help? DM <strong>@anxious</strong>
-        (Discord ID: <code class="mono">344566614492184587</code>).
-      </p>
-    </section>
-
-    <!-- Video Card -->
-    <section class="card media" aria-labelledby="video-title">
-      <div class="ring" aria-hidden="true"></div>
-      <div class="orb one"></div>
-      <div class="orb two"></div>
-
-      <h2 id="video-title" class="section-title">Video Guide</h2>
-
-      <!-- Responsive embed -->
-      <div class="video-wrap" role="region" aria-label="Video walkthrough">
-        <iframe
-          src="https://www.youtube.com/embed/F4wntEQpO7o"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen>
-        </iframe>
-      </div>
-
-      <p class="muted small mt-12 max-720">
-        If the video doesn’t load, try refreshing the page or open it directly on YouTube.
-      </p>
-    </section>
-
-    <!-- Screenshot Card -->
-    <section class="card media" aria-labelledby="shot-title">
-      <div class="ring" aria-hidden="true"></div>
-      <div class="orb one"></div>
-      <div class="orb two"></div>
-
-      <h2 id="shot-title" class="section-title">Screenshot Example</h2>
-
-      <img class="shot" src="image.png" alt="Example of the Versions folder and spoofed client placement.">
-      <p class="muted small mt-12 max-720">Your folder names may differ slightly based on the current Roblox version.</p>
-    </section>
-
-    <!-- CTA Card -->
-    <section class="card media center" aria-labelledby="cta-title">
-      <div class="ring" aria-hidden="true"></div>
-      <div class="orb one"></div>
-      <div class="orb two"></div>
-
-      <h2 id="cta-title" class="section-title">Need Help or Updates?</h2>
-
-      <div class="btn-row">
-        <a class="btn" href="https://discord.gg/S4F59A5xsB" target="_blank" rel="noopener">
-          <i class="fa-brands fa-discord"></i> Join Discord
-        </a>
-        <a class="btn" href="https://discord.gg/velocityide" target="_blank" rel="noopener" style="background:linear-gradient(145deg,#2027f5,#5b6dff)">
-          <i class="fa-brands fa-discord"></i> Velocity Discord Server
-        </a>
-      </div>
-
-      <p class="muted small mt-12 max-720">
-        These communities share hashes, updates, and troubleshooting steps.
-      </p>
-    </section>
-  </main>
-
-  <!-- =========================================================================
-       FOOTER
-       ========================================================================= -->
-  <footer class="site-foot wrap">
-    <div class="foot-row">
-      <p>&copy; 2025 Quick Start Guide — anxious (@loserant)</p>
-      <p class="small">All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- =========================================================================
-       OPTIONAL: LIGHT INTERACTIVITY (No external JS needed)
-       ========================================================================= -->
-  <script>
-    // Small, safe niceties: reduce motion if user prefers, and add focus ring helper.
-    (function(){
-      const mq = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
-      if(mq && mq.matches){
-        // Disable certain animations if user prefers reduced motion.
-        const styles = document.createElement('style');
-        styles.textContent = `
-          .card:hover { transform: none !important; }
-          .card .orb { animation: none !important; }
-          .ring { animation: none !important; }
-          .dust { animation: none !important; }
-        `;
-        document.head.appendChild(styles);
-      }
-
-      // Keyboard focus visible poly-tweak
-      let hadKeyboardEvent = false;
-      const handleFirstTab = (e) => {
-        if (e.key === 'Tab'){
-          document.documentElement.classList.add('focus-visible');
-          window.removeEventListener('keydown', handleFirstTab);
-        }
-      };
-      window.addEventListener('keydown', handleFirstTab, { once:true });
-
-      // Add a subtle hash copy helper on click for code elements
-      document.addEventListener('click', (e)=>{
-        const isCode = e.target.matches('code');
-        if(!isCode) return;
-        const txt = e.target.textContent.trim();
-        if(!txt) return;
-
-        try{
-          navigator.clipboard.writeText(txt);
-          e.target.style.outline = '1px dashed rgba(255,255,255,0.3)';
-          e.target.style.background = '#222538';
-          setTimeout(()=> {
-            e.target.style.outline = '';
-            e.target.style.background = '';
-          }, 850);
-        }catch(err){ /* noop */ }
-      }, false);
-    })();
-  </script>
-
-  <!-- =========================================================================
-       EXTRA (non-essential) STYLE — Focus ring for keyboard users only
-       ========================================================================= -->
-  <style>
-    html.focus-visible :is(a,button,.btn,.link-chip) { outline:2px solid rgba(88,101,242,.8); outline-offset: 3px; }
-  </style>
+    <footer>
+        <p>&copy; 2025 Quick Start Guide | @yesmyaccountisrare</p>
+    </footer>
 </body>
 </html>
