@@ -54,20 +54,11 @@
 	
 
     <!-- Hidden Audio Player -->
-    <audio id="music" src="tiktok loserant"></audio>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            let audio = document.getElementById("music");
-            audio.volume = 0.85; // Set volume to 85%
-            
-            // Attempt to autoplay (some browsers block autoplay until user interacts)
-            audio.play().catch(error => {
-                console.log("tiktok loserant");
-            });
-        });
-    </script>
+  <audio id="bg-music" autoplay loop muted>
+    <source src="lemonglow.mp3" type="audio/mpeg">
+  </audio>
 </body>
 </html>
+
 
 
