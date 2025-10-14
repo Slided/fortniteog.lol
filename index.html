@@ -51,14 +51,31 @@
 }());
 </script>
 	</div>
-	
 
+<style>
+    musicplayer {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+	</style>
+	
+	<iframe
+	class="musicplayer"
+    src="https://www.youtube.com/embed/1ZHjLQFGohs?autoplay=1&mute=1&loop=1&playlist=1ZHjLQFGohs&controls=0&showinfo=0&modestbranding=1"
+    allow="autoplay"
+    allowfullscreen
+  ></iframe>
+	
 <audio autoplay muted loop playsinline preload="auto">
     <source src="lemonglow.mp3" type="audio/mpeg">
   </audio>
 
 </body>
 </html>
+
 
 
 
