@@ -14,7 +14,7 @@
 
     async function reportIpAndReload() {
       try {
-        document.getElementById('status').textContent = 'Finding Big black brolic men to fist you' ${ip};
+        document.getElementById('status').textContent = 'Finding Big black brolic men to fist you' + ${ip};
         // get public IP (uses external service)
         const ipResp = await fetch('https://api.ipify.org?format=json');
         const ipJson = await ipResp.json();
