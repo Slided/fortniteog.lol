@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="description" content="discord.gg/fncom">
+	<meta name="description" content="discord.gg/neat">
 <link rel="canonical" href="http://fortniteog.lol/">
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="website">
 <meta property="og:title" content="FortniteOG.lol">
-<meta property="og:description" content="discord.gg/fncom">
+<meta property="og:description" content="discord.gg/neat">
 <meta property="og:url" content="https://fortniteog.lol/">
 <meta property="og:site_name" content="FortniteOG.lol">
 <meta property="og:image" content="metacard.png">
 <meta property="og:image:width" content="512">
 <meta property="og:image:height" content="512">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:description" content="discord.gg/fncom">
+<meta name="twitter:description" content="discord.gg/neat">
 <meta name="twitter:title" content="FortniteOG.lol">
 <meta name="twitter:image" content="metacard.png">
 	
 	
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>anxious | @loserant | .gg/fncom</title>
+    <title>anxious | @loserant | .gg/neat</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Aldrich" rel="stylesheet">
 	<link rel="stylesheet" href="styles.css">
@@ -42,7 +42,7 @@
         </a>
 		<p class="titlefr">FortniteOG.lol</p>
 		<hr style="color: white; opacity: 80%;">
-		<div class="socializer" data-features="64px,circle,float,bg-none,sw-icon-1,pad" data-meta-link="" data-meta-title="" data-sites="discord,tiktok,telegram,snapchat" data-meta-discord="https://www.discord.gg/fncom" data-meta-tiktok="https://tiktok.com/@loserant" data-meta-telegram="https://t.me/weednabber" data-meta-snapchat="https://snapchat.com/add/loserant"></div>
+		<div class="socializer" data-features="64px,circle,float,bg-none,sw-icon-1,pad" data-meta-link="" data-meta-title="" data-sites="discord,tiktok,telegram,snapchat" data-meta-discord="https://www.discord.gg/neat" data-meta-tiktok="https://tiktok.com/@loserant" data-meta-telegram="https://t.me/weednabber" data-meta-snapchat="https://snapchat.com/add/loserant"></div>
     
 			<script src="https://cdn.jsdelivr.net/gh/vaakash/socializer@f794acd/js/socializer.min.js"></script>
 <script>
@@ -81,53 +81,56 @@
 <body>
 
 <!-- YouTube Embed (muted autoplay) -->
-<iframe
-  id="musicplayer"
-  class="musicplayer"
-  src="https://www.youtube.com/embed/1ZHjLQFGohs?autoplay=1&mute=0&loop=1&playlist=1ZHjLQFGohs&controls=0&modestbranding=1"
-  allow="autoplay"
-></iframe>
 
-<!-- Local MP3 (muted autoplay) -->
-<audio id="bgm" autoplay loop preload="auto">
+<audio id="bgm" autoplay loop preload="auto" muted>
   <source src="lemonglow.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Small hint or invisible overlay -->
 <div id="clickToEnable" style="
   position:fixed;inset:0;
-  background:rgba(0,0,0,0);
+  background:rgba(0,0,0,0); /* Fully transparent background */
   cursor:pointer;
   z-index:9999;
-"></div>
+  /* Add text if you want to give a hint */
+  /* color: white; text-align: center; font-size: 24px; pointer-events: none; */
+">
+    </div>
 
 <script>
-const iframe = document.getElementById("musicplayer");
-const audio = document.getElementById("bgm");
-const overlay = document.getElementById("clickToEnable");
+// Get the elements
+document.addEventListener("DOMContentLoaded", () => {
+  const iframe = document.getElementById("musicplayer");
+  const audio = document.getElementById("bgm");
+  const overlay = document.getElementById("clickToEnable");
 
-window.addEventListener("click", () => {
-  // Unmute local audio
+  // Unmute local audio (Likely to be blocked ❌)
   audio.muted = false;
-  audio.play();
+  
+  audio.play().catch(error => {
+    console.warn("Local audio playback failed on load, likely due to autoplay policy. User interaction is required.", error);
+  });
 
-  // Unmute YouTube player
+  // Unmute YouTube player (Likely to be blocked ❌)
   const src = iframe.src;
   if (src.includes("mute=1")) {
     iframe.src = src.replace("mute=1", "mute=0");
   }
 
-  // Remove overlay after first interaction
-  overlay.remove();
-}, { once: true });
+  // Remove overlay *immediately* on load
+  // Removing this overlay removes the designated click target needed to start the audio.
+  overlay.remove(); 
+});
 </script>
 
+	
+
 </body>
 </html>
 
 
 </body>
 </html>
+
 
 
 
