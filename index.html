@@ -29,27 +29,26 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.7.2/css/all.css">
 
 <style>
-/* CSS for the initial black overlay and the fade effect */
+/* --- FADE-IN OVERLAY STYLES --- */
 #initialOverlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: black; /* Starts black */
+    background-color: black;
     opacity: 1;
-    z-index: 10000; /* Ensure it's on top of everything */
+    z-index: 10000;
     transition: opacity 2s ease-out; /* The fade-out transition */
     cursor: pointer;
 }
 
 #initialOverlay.fade-out {
     opacity: 0;
-    /* Optional: Hide after fade to ensure nothing is clickable through it */
     pointer-events: none; 
 }
 
-/* Optional: Add a subtle animation to make the 'Click to Continue' visible */
+/* Custom font and animation for "Click to Continue" */
 #initialOverlay p {
     position: absolute;
     top: 50%;
@@ -57,7 +56,9 @@
     transform: translate(-50%, -50%);
     color: white;
     font-size: 20px;
-    font-family: sans-serif;
+    /* Using your title class for the custom font */
+    font-family: var(--title-font, 'Aldrich', sans-serif); 
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     animation: pulse 1.5s infinite alternate;
 }
 
@@ -65,16 +66,91 @@
     from { opacity: 0.7; }
     to { opacity: 1; }
 }
+
+/* --- HIDING THE AUDIO ELEMENT (AS REQUESTED) --- */
+audio {
+    display: none;
+}
+
+/* --- CUSTOM AUDIO CONTROLLER STYLES --- */
+#audioController {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 5000;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 250px;
+    color: white;
+    font-family: sans-serif;
+    opacity: 0; /* Starts hidden */
+    transition: opacity 0.5s;
+}
+#audioController.visible {
+    opacity: 1;
+}
+
+#controllerButtons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.controller-btn {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 0;
+    transition: background 0.2s;
+}
+
+.controller-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Slider styling (basic) */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    background: #555;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+}
+
+#volumeContainer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
 </style>
 
 </head>    
 <body>
     <div id="initialOverlay">
-        <p>Click to Continue</p>
+        <p class="titlefr">FortniteOG.lol</p>
     </div>
 
     <div class="background-video-container">
-        <video class="background-video" autoplay loop muted playsinline>
+        <video id="bgVideo" class="background-video" loop muted playsinline> 
             <source src="bg.mp4" type="video/mp4">
         </video>
     </div>
@@ -95,70 +171,113 @@
 </script>
     </div>
 
-<style>
-    musicplayer {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      opacity: 0;
-      pointer-events: none;
-    }
-    </style>
-    
-<style>
-  iframe.musicplayer {
-    width: 0;
-    height: 0;
-    border: none;
-  }
-  audio {
-    display: none;
-  }
-</style>
-
-<iframe
-  id="musicplayer"
-  class="musicplayer"
-  src="https://www.youtube.com/embed/1ZHjLQFGohs?autoplay=1&mute=1&loop=1&playlist=1ZHjLQFGohs&controls=0&modestbranding=1"
-  allow="autoplay"
-></iframe>
-
-<audio id="bgm" autoplay loop preload="auto" muted> <source src="lemonglow.mp3" type="audio/mpeg">
+<audio id="bgm" loop preload="auto" muted> 
+  <source src="lemonglow.mp3" type="audio/mpeg">
 </audio>
 
+
+<div id="audioController">
+    <div id="progressContainer">
+        <input type="range" id="seekSlider" value="0" min="0" max="100">
+    </div>
+    <div id="controllerButtons">
+        <button id="playPauseBtn" class="controller-btn"><i class="fas fa-play"></i></button>
+        <button id="muteBtn" class="controller-btn"><i class="fas fa-volume-up"></i></button>
+        <div id="volumeContainer">
+            <i class="fas fa-volume-down"></i>
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.75">
+        </div>
+    </div>
+</div>
+
+
 <script>
-const iframe = document.getElementById("musicplayer");
 const audio = document.getElementById("bgm");
-const initialOverlay = document.getElementById("initialOverlay"); // 🌟 NEW: Get the overlay
+const bgVideo = document.getElementById("bgVideo");
+const initialOverlay = document.getElementById("initialOverlay");
+const audioController = document.getElementById("audioController");
 
-// We listen for a click on the initial overlay only, not the whole window.
+// Controller elements
+const playPauseBtn = document.getElementById("playPauseBtn");
+const muteBtn = document.getElementById("muteBtn");
+const volumeSlider = document.getElementById("volumeSlider");
+const seekSlider = document.getElementById("seekSlider");
+
+// --- INITIAL SETUP ---
+// Set initial volume to 0.75 (75%)
+audio.volume = 0.75;
+
+
+// --- 1. INITIAL CLICK HANDLER (FADE-IN AND START MEDIA) ---
 initialOverlay.addEventListener("click", () => {
-    // 1. Initiate the **Fade-In** by applying the class
-    initialOverlay.classList.add('fade-out');
-
-    // 2. Start the **Music**
-    // Unmute local audio
+    // A. Start Media
+    bgVideo.play();
     audio.muted = false;
     audio.play();
 
-    // Unmute YouTube player
-    let src = iframe.src;
-    // Check if it's currently muted (it should be with mute=1)
-    if (src.includes("mute=1")) {
-        // Replace mute=1 with mute=0 to unmute
-        src = src.replace("mute=1", "mute=0");
-        iframe.src = src; // Reload iframe to apply the new setting
-    }
+    // B. Visual Effects
+    initialOverlay.classList.add('fade-out');
+    audioController.classList.add('visible'); // Show the controller
 
-    // 3. Remove the overlay *after* the fade-out is complete (2000ms from the CSS transition)
+    // C. Remove overlay after fade-out
     setTimeout(() => {
         initialOverlay.remove();
-    }, 2000); // Wait 2 seconds (the length of the CSS transition)
+    }, 2000); 
 
 }, { once: true });
-</script>
 
-    
+
+// --- 2. AUDIO CONTROLLER LOGIC ---
+
+// Play/Pause Toggle
+playPauseBtn.addEventListener('click', () => {
+    if (audio.paused) {
+        audio.play();
+        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    } else {
+        audio.pause();
+        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+    }
+});
+
+// Mute/Unmute Toggle
+muteBtn.addEventListener('click', () => {
+    audio.muted = !audio.muted;
+    if (audio.muted) {
+        muteBtn.innerHTML = '<i class="fas fa-volume-off"></i>';
+    } else {
+        muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+    }
+});
+
+// Volume Control
+volumeSlider.addEventListener('input', () => {
+    audio.volume = volumeSlider.value;
+    // Unmute if volume is adjusted
+    if (audio.muted && audio.volume > 0) {
+        audio.muted = false;
+        muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+    }
+});
+
+// Track Seeker Update (while playing)
+audio.addEventListener('timeupdate', () => {
+    const value = (audio.currentTime / audio.duration) * 100;
+    if (!isNaN(value)) {
+        seekSlider.value = value;
+    }
+});
+
+// Track Seeking (user interaction)
+seekSlider.addEventListener('input', () => {
+    // Calculate new time based on slider value
+    const seekTo = audio.duration * (seekSlider.value / 100);
+    audio.currentTime = seekTo;
+});
+
+// Set the initial play button icon (should be 'play' because the audio starts paused until click)
+playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+</script>
 
 </body>
 </html>
