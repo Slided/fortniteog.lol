@@ -62,19 +62,73 @@
     }
 	</style>
 	
-	<iframe
-	class="musicplayer"
-    src="https://www.youtube.com/embed/1ZHjLQFGohs?autoplay=1&mute=1&loop=1&playlist=1ZHjLQFGohs&controls=0&showinfo=0&modestbranding=1"
-    allow="autoplay"
-    allowfullscreen
-  ></iframe>
-	
-<audio autoplay muted loop playsinline preload="auto">
-    <source src="lemonglow.mp3" type="audio/mpeg">
-  </audio>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Autoplay Music Fix</title>
+<style>
+  iframe.musicplayer {
+    width: 0;
+    height: 0;
+    border: none;
+  }
+  audio {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- YouTube Embed (muted autoplay) -->
+<iframe
+  id="musicplayer"
+  class="musicplayer"
+  src="https://www.youtube.com/embed/1ZHjLQFGohs?autoplay=1&mute=0&loop=1&playlist=1ZHjLQFGohs&controls=0&modestbranding=1"
+  allow="autoplay"
+></iframe>
+
+<!-- Local MP3 (muted autoplay) -->
+<audio id="bgm" autoplay loop preload="auto">
+  <source src="lemonglow.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Small hint or invisible overlay -->
+<div id="clickToEnable" style="
+  position:fixed;inset:0;
+  background:rgba(0,0,0,0);
+  cursor:pointer;
+  z-index:9999;
+"></div>
+
+<script>
+const iframe = document.getElementById("musicplayer");
+const audio = document.getElementById("bgm");
+const overlay = document.getElementById("clickToEnable");
+
+window.addEventListener("click", () => {
+  // Unmute local audio
+  audio.muted = false;
+  audio.play();
+
+  // Unmute YouTube player
+  const src = iframe.src;
+  if (src.includes("mute=1")) {
+    iframe.src = src.replace("mute=1", "mute=0");
+  }
+
+  // Remove overlay after first interaction
+  overlay.remove();
+}, { once: true });
+</script>
 
 </body>
 </html>
+
+
+</body>
+</html>
+
 
 
 
